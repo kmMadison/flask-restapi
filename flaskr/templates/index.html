@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div id="app">
+        <article class="message">
+            <h2>Seconds until the HSV Hackaton [[ countDown ]]</h2>
+            <div class="block">
+            </div>
+        </article>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    let app = new Vue({
+        el: '#app',
+        delimiters: [ '[[', ']]'],
+        data: {
+            title: 'hello world!',
+            band: {},
+            message: 'You loaded this page on ' + new Date().toLocaleStri,
+            todos: [
+                { text: 'Learn JavaScript' },
+                { text: 'Learn Vue' },
+                { text: 'Build something awesome' }
+            ],
+            anInput: 'Colorful',
+            selectedTime: 0,
+            timeLeft: '00:00',
+            endTime: '10/18/2019',
+            countDown : 103197
+        },
+        methods: {
+            countDownTimer() {
+                if(this.countDown > 0) {
+                    setTimeout(() => {
+                        this.countDown -= 1;
+                        this.countDownTimer()
+                    }, 1000)
+                }
+            }
+        },
+        created: function () {
+           this.countDownTimer()
+        }
+    })
+
+
+</script>
+{% endblock %}

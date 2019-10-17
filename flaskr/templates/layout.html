@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../static/style/main.css"/>
+    <Link rel="stylesheet" href="../static/bulma-0.7.5/css/bulma.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- production version, optimized for size and speed -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+    <title>Home</title>
+</head>
+<body>
+
+<div id="layout">
+    <nav class="flex-container" style="flex-direction: row" role="navigation" aria-label="main navigation"> 
+        <div class="flex-item" v-for="item in items">
+            <a class="menu-item" style="color: white" href="/">[[ item.title ]]</a>
+        </div>
+    </nav>
+</div>   
+    
+{% block content %}
+{% endblock %}
+
+
+<!--Put a Footer here-->
+<script>
+        var layout = new Vue({
+          el: '#layout',
+          delimiters: [ '[[', ']]'],
+          data: {
+            message: 'Hello Vue!',
+            items: [
+              { title: 'Home', link: '/' },
+              { title: 'Documentation', link: '/' },
+              { title: 'Nasa Support', link: '/' },
+              { title: 'The Team', link: '/' }
+            ]
+          }
+        })
+</script>
+
+{% block scripts %}
+{% endblock %}
+</body>
+</html>
